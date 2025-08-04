@@ -61,7 +61,9 @@ async def check_message(message: Message):
                 BANNED_USERS[user_id] = now + 2 * 60 * 60
                 await message.answer('Вы заблокированы на 2 часа за повторное нарушение!')
             else:
-                await message.answer(f'Предупреждение {warns} / {WARNING_LIMIT}: не используй подобное слово!')
+                user_name = message.from_user.full_name
+                await message.bot.send_message(-1002808747520,
+                                     f'{user_name} Предупреждение {warns} / {WARNING_LIMIT}: не используй подобное слово!')
 
 
 
